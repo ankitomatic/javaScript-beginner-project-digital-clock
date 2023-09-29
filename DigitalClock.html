@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Document</title>
+            <style type = "text/css">
+        
+                body{
+                    background: black;
+                }
+                .todayDate{
+                    color: #17d4fe;
+                    font-size: 50px;
+                    text-align: center;
+                    margin-top: 10%;
+                    font-family: "Orbitron",sans-serif;
+                    letter-spacing: 7px;
+                }
+                .clock{
+                    color: #17d4fe;
+                    font-size: 50px;
+                    text-align: center;
+                    margin-top: 7%;
+                    font-family: 'Orbitron', sans-serif;
+                    letter-spacing: 7px;
+                }
+                .container{
+
+                    width: 900px;
+                    border: 1px solid #17d4fe;
+                    position: absolute;
+                    transform: translate(-50%,-50%);
+                    left: 50%;
+                    top: 50%;
+                }
+                
+            </style>
+    </head>
+        <body onload = "showTime()">
+            <div class = "container">
+                <div id = "date" class = "todayDate" > </div>
+
+                <div id = "DigiClock" class = "clock">
+                </div>
+            </div>
+            
+        </body>
+        <script>
+            function showTime(){
+                var d = new Date();
+                var h = d.getHours();
+                var m = d.getMinutes();
+                var s = d.getSeconds();
+                var session="AM"
+                            
+                if(h>12){
+                    h = h-12;
+                }
+                if(h >= 12){
+                    session = "PM"
+                }
+
+                h = (h<10) ? "0"+h : h;
+                m = (m<10) ? "0"+m : m;
+                s = (s<10) ? "0"+s : s;
+                var time = h + ":" + m + ":" + s + " " + session;
+                // var days = ['sunday','monday','tuesday','wednesday','thursday','friday','saturday'];
+                            
+                document.getElementById("DigiClock").innerText = time;
+                            
+                var todayDate = new Date();
+                var date = todayDate.toDateString();
+                document.getElementById("date").innerText = date;
+                setTimeout(showTime,1000);
+            }
+            
+            
+            
+                        
+        </script>
+</html>
